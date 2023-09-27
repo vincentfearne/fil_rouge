@@ -13,9 +13,6 @@ class Fournisseur
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $fou_id = null;
-
     #[ORM\Column(length: 50)]
     private ?string $fou_nom = null;
 
@@ -37,18 +34,6 @@ class Fournisseur
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getFouId(): ?int
-    {
-        return $this->fou_id;
-    }
-
-    public function setFouId(int $fou_id): static
-    {
-        $this->fou_id = $fou_id;
-
-        return $this;
     }
 
     public function getFouNom(): ?string

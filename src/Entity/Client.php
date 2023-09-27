@@ -13,9 +13,6 @@ class Client
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $cli_id = null;
-
     #[ORM\Column(length: 13)]
     private ?string $cli_type = null;
 
@@ -40,18 +37,6 @@ class Client
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCliId(): ?int
-    {
-        return $this->cli_id;
-    }
-
-    public function setCliId(int $cli_id): static
-    {
-        $this->cli_id = $cli_id;
-
-        return $this;
     }
 
     public function getCliType(): ?string

@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\DetailRepository;
+use App\Repository\LivproRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: DetailRepository::class)]
-class Detail
+#[ORM\Entity(repositoryClass: LivproRepository::class)]
+class Livpro
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,16 +16,13 @@ class Detail
     #[ORM\Column]
     private ?int $det_qte = null;
 
-    #[ORM\Column]
-    private ?float $det_pro_prix = null;
-
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Produit $pro = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Commande $com = null;
+    private ?Livraison $liv = null;
 
     public function getId(): ?int
     {
@@ -44,18 +41,6 @@ class Detail
         return $this;
     }
 
-    public function getDetProPrix(): ?float
-    {
-        return $this->det_pro_prix;
-    }
-
-    public function setDetProPrix(float $det_pro_prix): static
-    {
-        $this->det_pro_prix = $det_pro_prix;
-
-        return $this;
-    }
-
     public function getPro(): ?Produit
     {
         return $this->pro;
@@ -68,14 +53,14 @@ class Detail
         return $this;
     }
 
-    public function getCom(): ?Commande
+    public function getLiv(): ?Livraison
     {
-        return $this->com;
+        return $this->liv;
     }
 
-    public function setCom(?Commande $com): static
+    public function setLiv(?Livraison $liv): static
     {
-        $this->com = $com;
+        $this->liv = $liv;
 
         return $this;
     }

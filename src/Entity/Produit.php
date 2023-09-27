@@ -13,9 +13,6 @@ class Produit
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $pro_id = null;
-
     #[ORM\Column(length: 50)]
     private ?string $pro_libelle = null;
 
@@ -25,7 +22,7 @@ class Produit
     #[ORM\Column]
     private ?float $pro_prix = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $pro_photo = null;
 
     #[ORM\Column(length: 50)]
@@ -33,27 +30,15 @@ class Produit
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Categorie $cat_id = null;
+    private ?Categorie $cat = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Fournisseur $fou_id = null;
+    private ?Fournisseur $fou = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getProId(): ?int
-    {
-        return $this->pro_id;
-    }
-
-    public function setProId(int $pro_id): static
-    {
-        $this->pro_id = $pro_id;
-
-        return $this;
     }
 
     public function getProLibelle(): ?string
@@ -97,7 +82,7 @@ class Produit
         return $this->pro_photo;
     }
 
-    public function setProPhoto(?string $pro_photo): static
+    public function setProPhoto(string $pro_photo): static
     {
         $this->pro_photo = $pro_photo;
 
@@ -116,26 +101,26 @@ class Produit
         return $this;
     }
 
-    public function getCatId(): ?Categorie
+    public function getCat(): ?Categorie
     {
-        return $this->cat_id;
+        return $this->cat;
     }
 
-    public function setCatId(?Categorie $cat_id): static
+    public function setCat(?Categorie $cat): static
     {
-        $this->cat_id = $cat_id;
+        $this->cat = $cat;
 
         return $this;
     }
 
-    public function getFouId(): ?Fournisseur
+    public function getFou(): ?Fournisseur
     {
-        return $this->fou_id;
+        return $this->fou;
     }
 
-    public function setFouId(?Fournisseur $fou_id): static
+    public function setFou(?Fournisseur $fou): static
     {
-        $this->fou_id = $fou_id;
+        $this->fou = $fou;
 
         return $this;
     }

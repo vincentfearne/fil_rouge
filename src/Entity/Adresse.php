@@ -13,9 +13,6 @@ class Adresse
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $ad_id = null;
-
     #[ORM\Column(length: 255)]
     private ?string $ad_adresse = null;
 
@@ -35,18 +32,6 @@ class Adresse
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getAdId(): ?int
-    {
-        return $this->ad_id;
-    }
-
-    public function setAdId(int $ad_id): static
-    {
-        $this->ad_id = $ad_id;
-
-        return $this;
     }
 
     public function getAdAdresse(): ?string

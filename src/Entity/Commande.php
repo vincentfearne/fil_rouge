@@ -15,9 +15,6 @@ class Commande
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $com_id = null;
-
-    #[ORM\Column]
     private ?float $com_prix = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -26,7 +23,7 @@ class Commande
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $com_date_exp = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 10, nullable: true)]
     private ?string $com_statut = null;
 
     #[ORM\Column(length: 50, nullable: true)]
@@ -39,27 +36,15 @@ class Commande
     private ?\DateTimeInterface $com_fac_date = null;
 
     #[ORM\ManyToOne]
-    private ?Adresse $ad_id = null;
+    private ?Adresse $ad = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Client $cli_id = null;
+    private ?Client $cli = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getComId(): ?int
-    {
-        return $this->com_id;
-    }
-
-    public function setComId(int $com_id): static
-    {
-        $this->com_id = $com_id;
-
-        return $this;
     }
 
     public function getComPrix(): ?float
@@ -103,7 +88,7 @@ class Commande
         return $this->com_statut;
     }
 
-    public function setComStatut(string $com_statut): static
+    public function setComStatut(?string $com_statut): static
     {
         $this->com_statut = $com_statut;
 
@@ -146,26 +131,26 @@ class Commande
         return $this;
     }
 
-    public function getAdId(): ?Adresse
+    public function getAd(): ?Adresse
     {
-        return $this->ad_id;
+        return $this->ad;
     }
 
-    public function setAdId(?Adresse $ad_id): static
+    public function setAd(?Adresse $ad): static
     {
-        $this->ad_id = $ad_id;
+        $this->ad = $ad;
 
         return $this;
     }
 
-    public function getCliId(): ?Client
+    public function getCli(): ?Client
     {
-        return $this->cli_id;
+        return $this->cli;
     }
 
-    public function setCliId(?Client $cli_id): static
+    public function setCli(?Client $cli): static
     {
-        $this->cli_id = $cli_id;
+        $this->cli = $cli;
 
         return $this;
     }
