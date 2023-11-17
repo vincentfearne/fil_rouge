@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sounds Talented - Sous catégories{% endblock %}
+
+
+
+
+{% block body %}
+<br>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-6">
+    {% for categorie in categorie %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://picsum.photos/100/150" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ categorie.catnom }}</h5>
+                <p class="card-text">{{ categorie.catdescription }}</p>
+                <a href="{{ path('detail.categorie', {'id': categorie.id}) }}" class="btn btn-primary">Voir les produits</a>
+            </div>
+        </div>
+        </div>
+
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

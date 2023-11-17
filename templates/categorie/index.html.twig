@@ -3,36 +3,25 @@
 {% block title %}Sounds Talented - Catégories{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h2>Catégories</h2>
 
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nom</th>
-                <th scope="col">ID Catégorie mère</th>
-                <th scope="col">Photo</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="table-active">
-                <th scope="row">Active</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        {% for categorie in categorie%}
-            <div>
-                <p>{{ categorie.catNom }}</p>
-            </div>
-        {% endfor %}
-
+<div class="container-fluid">
+    <h2 class="mt-4" style="color: white">Catégories :</h2><br><br>
+    <div class="row col-12">
+    {% for categorie in categorie %}
+        {% if categorie.cat is null %}
+    <div class="card mx-4" style="width: 12rem;">
+        <img class="card-img-top" src="{{ categorie.catphoto }}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ categorie.catnom }}</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Détail</a>
+        </div>
     </div>
-{% endblock %}
+        {% endif %}
+    {% endfor %}
+    </div>
 
+</div>
+
+{% endblock %}
 

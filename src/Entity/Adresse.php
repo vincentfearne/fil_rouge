@@ -27,7 +27,7 @@ class Adresse
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Client $cli_id = null;
+    private ?User $user_id = null;
 
     public function getId(): ?int
     {
@@ -82,14 +82,14 @@ class Adresse
         return $this;
     }
 
-    public function getCliId(): ?Client
+    public function getUserId(): ?User
     {
-        return $this->cli_id;
+        return $this->user_id_id;
     }
 
-    public function setCliId(?Client $cli_id): static
+    public function setUserId(?User $user_id): static
     {
-        $this->cli_id = $cli_id;
+        $this->user_id = $user_id;
 
         return $this;
     }

@@ -20,8 +20,6 @@ class Commande
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $com_date = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $com_date_exp = null;
 
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $com_statut = null;
@@ -40,7 +38,10 @@ class Commande
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Client $cli = null;
+    private ?User $user = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $com_date_exp = null;
 
     public function getId(): ?int
     {
@@ -67,18 +68,6 @@ class Commande
     public function setComDate(\DateTimeInterface $com_date): static
     {
         $this->com_date = $com_date;
-
-        return $this;
-    }
-
-    public function getComDateExp(): ?\DateTimeInterface
-    {
-        return $this->com_date_exp;
-    }
-
-    public function setComDateExp(\DateTimeInterface $com_date_exp): static
-    {
-        $this->com_date_exp = $com_date_exp;
 
         return $this;
     }
@@ -143,14 +132,26 @@ class Commande
         return $this;
     }
 
-    public function getCli(): ?Client
+    public function getUser(): ?User
     {
-        return $this->cli;
+        return $this->user;
     }
 
-    public function setCli(?Client $cli): static
+    public function setUser(?User $user): static
     {
-        $this->cli = $cli;
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getComDateExp(): ?\DateTimeInterface
+    {
+        return $this->com_date_exp;
+    }
+
+    public function setComDateExp(?\DateTimeInterface $com_date_exp): static
+    {
+        $this->com_date_exp = $com_date_exp;
 
         return $this;
     }

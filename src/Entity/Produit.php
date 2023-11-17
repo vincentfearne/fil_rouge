@@ -28,8 +28,8 @@ class Produit
     #[ORM\Column(length: 50)]
     private ?string $pro_ref = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'produit')]
+    #[ORM\JoinColumn(nullable: false, name:'categorie_id', referencedColumnName:"id")]
     private ?Categorie $cat = null;
 
     #[ORM\ManyToOne]

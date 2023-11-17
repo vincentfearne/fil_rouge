@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategorieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
@@ -19,8 +21,19 @@ class Categorie
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $cat_photo = null;
 
+    #[ORM\Column(length: 1000, nullable: true)]
+    private ?string $cat_description = null;
+
     #[ORM\ManyToOne(targetEntity: self::class)]
     private ?self $cat = null;
+
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class, orphanRemoval: true)]
+    private Collection $produit;
+
+    public function __construct()
+    {
+        $this->produit = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,5 +74,22 @@ class Categorie
         $this->cat = $cat;
 
         return $this;
+    }
+
+    public function getCatDescription(): ?string
+    {
+        return $this->cat_description;
+    }
+
+    public function setCatDescription(string $cat_description): static
+    {
+        $this->cat_description = $cat_description;
+
+        return $this;
+    }
+
+    public function getProduit(): Collection
+    {
+        return $this->produit;
     }
 }
