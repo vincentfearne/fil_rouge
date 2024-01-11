@@ -8,3 +8,14 @@ body {
   color: black;
 }
 
+.w {
+  color: white;
+}
+
+.blur {
+  backdrop-filter: blur(10px);
+}
+
+.b {
+  color: black;
+}

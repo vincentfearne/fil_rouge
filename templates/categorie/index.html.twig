@@ -14,7 +14,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ categorie.catnom }}</h5>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Détail</a>
+            <a href="{{ path('sous.categorie', {'id': categorie.id}) }}" class="btn btn-primary">Détail</a>
         </div>
     </div>
         {% endif %}

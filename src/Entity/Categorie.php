@@ -6,8 +6,10 @@ use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+#[ApiResource]
 class Categorie
 {
     #[ORM\Id]
@@ -27,7 +29,7 @@ class Categorie
     #[ORM\ManyToOne(targetEntity: self::class)]
     private ?self $cat = null;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'cat', targetEntity: Produit::class, orphanRemoval: true)]
     private Collection $produit;
 
     public function __construct()

@@ -10,16 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link mx-4" href="{{ path('home.index') }}"><h5>Accueil</h5></a>
+                    <a class="nav-link mx-4 b" href="{{ path('home.index') }}"><h5>Accueil</h5></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-4" href="{{ path('app_categorie') }}"><h5>Catégories</h5></a>
+                    <a class="nav-link mx-4 b" href="{{ path('app_categorie') }}"><h5>Catégories</h5></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-4" href="{{ path('entreprise') }}"><h5>Qui sommes nous</h5></a>
+                    <a class="nav-link mx-4 b" href="{{ path('entreprise') }}"><h5>Qui sommes nous</h5></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><h5>Nous contacter</h5></a>
+                    <a class="nav-link mx-4" href="#"><h5>Nous contacter</h5></a>
                 </li>
             </ul>
         </div>
@@ -28,7 +28,10 @@
         <ul class="navbar-nav ms-auto mb-2 mb-0">
             {% if app.user %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mon compte</a>
+                    <a class="nav-link" href="{{ path('cart_index') }}">Panier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_user') }}">Mon compte</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>

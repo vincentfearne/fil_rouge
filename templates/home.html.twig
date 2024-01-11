@@ -22,7 +22,7 @@
             <div class="card-body my-2">
                 <h5 class="card-title">{{ produit.prolibelle }}</h5>
                 <p class="card-text">{{ produit.prodescription }}</p>
-                <p class="card-text"><small class="text-muted">{{ produit.cat.id }}</small></p>
+                <a href="{{ path('detail.produit', {'id': produit.id}) }}" class="btn btn-primary">Détails</a>
             </div>
         </div>
     </div>

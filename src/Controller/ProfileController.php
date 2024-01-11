@@ -2,17 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class UserController extends AbstractController
+class ProfileController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
+    #[Route('/profile', name: 'app_profile')]
     public function index(): Response
     {
-        return $this->render('user/index.html.twig');
+        return $this->render('profile/index.html.twig', [
+            'controller_name' => 'ProfileController',
+        ]);
     }
 }
